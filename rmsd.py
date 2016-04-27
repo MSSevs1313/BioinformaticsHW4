@@ -31,14 +31,19 @@ def rmsd(a, b):
     total /= len(a)
     return math.sqrt(total)
 
+
 # aligns a given list to the origin by subtracting
 # the centroid from each point
 def align_to_origin(listA, centroid):
     # centroid = find_centroid(listA)
     for pt in listA:
-        pt[6] = float(pt[6]) - float(centroid[6])
-        pt[7] = float(pt[7]) - float(centroid[7])
-        pt[8] = float(pt[8]) - float(centroid[8])
+        if not pt == centroid:
+            pt[6] = float(pt[6]) - float(centroid[6])
+            pt[7] = float(pt[7]) - float(centroid[7])
+            pt[8] = float(pt[8]) - float(centroid[8])
+    centroid[6] = 0.0
+    centroid[7] = 0.0
+    centroid[8] = 0.0
     # return find_centroid(listA)
 
 
